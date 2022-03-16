@@ -2,17 +2,10 @@ import React, { Component } from 'react'
 import { Card, Button, Row, Col } from 'react-bootstrap'
 
 class Contents extends Component {
-  state = {
-    firstLoad: true
-  }
-  componentDidMount() {
-    setTimeout(() =>
-      this.setState({firstLoad: false})
-    , 3000)
-  }
+  
   render() {
     return (
-      this.state.firstLoad? <h4 className='text-center mt-5'>Loading...</h4>:
+      this.props.isLoad? <h4 className='text-center mt-5'>Loading...</h4>:
       <Row className="mt-4">
         {
           (this.props.articles.length > 0)?
