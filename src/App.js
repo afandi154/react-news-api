@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'react-bootstrap'
-import Contents from './components/Contents'
-import NavbarCompontent from './components/NavbarCompontent'
+import Contents from './ClassComponent/Contents'
+import NavbarCompontent from './ClassComponent/NavbarCompontent'
 import axios from 'axios'
 
 class App extends Component {
@@ -13,9 +13,7 @@ class App extends Component {
 
   componentDidMount(){
     axios.get("https://newsapi.org/v2/everything?q=international&apiKey=f9d2f27f4a784cc7a1871946aafe7730")
-      .then(response => {
-        return setTimeout(() => this.setState({articles: response.data.articles, loading: false}), 2000)
-      })
+      .then(response => console.log(response))
       .catch(err => console.log(err))
       .finally(() => this.setState({loading: true}))
   }
