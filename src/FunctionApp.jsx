@@ -15,9 +15,19 @@ function FunctionApp() {
     )
   }, [search])
 
+  function debounce(func, timeout){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), timeout);
+    };
+  }
+
+  const processChange = debounce((e) => setSearch(e), 1000);
+
   return (
     <>
-      <FunctionNavbar onSearch={(search) => setSearch(search)}/>
+      <FunctionNavbar onSearch={(search) => processChange(search)}/>
       <Container>
         <h1 className='mt-5'>
           {

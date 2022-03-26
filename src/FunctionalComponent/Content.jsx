@@ -24,7 +24,7 @@ function Content({link, search}) {
           articles.map((data, index) => {
             let title = (data.title.length > 60)? data.title.slice(0, 60)+"..." : data.title;
             let author = (data.author != null)? ((data.author.length > 55)? data.author.slice(0, 55): data.author) : 'Unknown';
-            let desc = data.description.replace(/[<>=/"]/gi, "");
+            let desc = data.description? data.description.replace(/[<>=/"]/gi, "") : "undefined";
 
             return(
               <Col xs md="6" lg="4" key={index}>
